@@ -1,0 +1,10 @@
+{
+  "name": "FutureBook Study App",
+  "short_name": "FutureBook",
+  "description": "Study notes, practice quizzes and exam preparation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#132c4d",
+  "icons": []
+}
