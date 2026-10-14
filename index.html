@@ -1,71 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Extracted Study Hub Library</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study Hub | Batches • Lectures • Notes</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1020;--panel:#141c31;--muted:#9eacc8;--line:#283653;--accent:#6d8cff;--text:#f2f5ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
-header{padding:22px clamp(16px,4vw,42px);border-bottom:1px solid var(--line);background:#0e1528;position:sticky;top:0;z-index:5}
-h1{margin:0 0 5px;font-size:clamp(21px,3vw,30px)}.sub{color:var(--muted);margin:0}
-.layout{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:calc(100vh - 100px)}
-aside{padding:18px;border-right:1px solid var(--line);background:#0e1528;max-height:calc(100vh - 100px);overflow:auto}
-main{padding:clamp(14px,3vw,30px);min-width:0}.search{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0b1020;color:var(--text);margin-bottom:14px}
-.cat{margin:16px 0 7px;color:#9eacc8;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:800}
-.page-btn{display:block;width:100%;text-align:left;background:transparent;color:var(--text);border:1px solid transparent;border-radius:9px;padding:10px;margin:3px 0;cursor:pointer;overflow-wrap:anywhere}
-.page-btn:hover,.page-btn.active{background:#1b2946;border-color:#31466f}.welcome{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px;text-align:left;color:var(--text);cursor:pointer}
-.card small{display:block;color:var(--muted);margin-top:7px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.action{background:var(--accent);color:white;border:0;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer}
-.frame{width:100%;height:78vh;min-height:480px;border:1px solid var(--line);border-radius:12px;background:white}
-.links{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.links a{color:#aebeff;overflow-wrap:anywhere}
-.note{color:var(--muted);font-size:13px}
-@media(max-width:760px){.layout{grid-template-columns:1fr}aside{position:static;max-height:38vh;border-right:0;border-bottom:1px solid var(--line)}.frame{height:72vh;min-height:390px}}
-</style>
-</head>
+:root{--bg:#0a1020;--panel:#121b30;--panel2:#18243c;--text:#edf2ff;--muted:#9baac8;--line:#293958;--blue:#6f8fff;--green:#41c99a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#162343 0,#0a1020 55%);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:22px clamp(16px,4vw,42px);border-bottom:1px solid var(--line);background:#0b1326;position:sticky;top:0;z-index:4}
+h1{margin:0;font-size:clamp(23px,3vw,32px)}header p{margin:5px 0 0;color:var(--muted)}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:calc(100vh - 100px)}
+aside{padding:17px;border-right:1px solid var(--line);background:#0b1326;overflow:auto;max-height:calc(100vh - 100px);position:sticky;top:100px;align-self:start}
+main{padding:clamp(15px,3vw,30px);min-width:0}.search{width:100%;padding:12px;border-radius:10px;background:#0a1020;color:var(--text);border:1px solid var(--line);margin-bottom:12px}
+.category{font-size:11px;color:#8498c1;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin:18px 0 6px}
+.navbtn{display:block;width:100%;text-align:left;color:var(--text);background:transparent;border:1px solid transparent;border-radius:9px;padding:10px;cursor:pointer;margin:3px 0;overflow-wrap:anywhere}
+.navbtn:hover,.navbtn.active{background:#1a2946;border-color:#344b78}.hero,.panel{background:linear-gradient(145deg,#15213a,#10182b);border:1px solid var(--line);border-radius:16px;padding:20px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px}.stat b{font-size:22px;display:block}.stat span{color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;color:var(--text);text-align:left;cursor:pointer;min-width:0}.card:hover{background:var(--panel2);border-color:#4c6597}
+.card h3{margin:0 0 9px;font-size:16px}.muted{color:var(--muted);font-size:13px}.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.pill{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:#c4d0ec}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tab,.action{border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:var(--panel2);color:var(--text);cursor:pointer;font-weight:700}.tab.active,.action.primary{background:var(--blue);border-color:var(--blue);color:white}
+.resource{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.resource:last-child{border-bottom:0}.resource a{color:#b9c8ff;overflow-wrap:anywhere}.resource small{display:block;color:var(--muted)}
+.frame{width:100%;height:76vh;min-height:430px;border:1px solid var(--line);border-radius:12px;background:white}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.notice{color:var(--muted);font-size:13px;line-height:1.6}.empty{padding:20px;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+@media(max-width:780px){.layout{grid-template-columns:1fr}aside{position:static;max-height:35vh;border-right:0;border-bottom:1px solid var(--line)}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.frame{height:70vh;min-height:380px}}
+</style></head>
 <body>
-<header><h1>Extracted Study Hub Library</h1><p class="sub" id="summary">Loading extracted pages…</p></header>
-<div class="layout">
-<aside><input class="search" id="search" placeholder="Search courses / pages…" aria-label="Search courses and pages"><nav id="nav"></nav></aside>
-<main id="main"><section class="welcome"><h2>Study library</h2><p>Choose a category or page from the left to open its original content.</p></section></main>
-</div>
+<header><h1>📚 Study Hub</h1><p id="subtitle">Batches • Lectures • Notes • Video Library</p></header>
+<div class="layout"><aside><input id="search" class="search" placeholder="Search batch, subject, lecture…" aria-label="Search library"><nav id="nav"></nav></aside><main id="main"></main></div>
 <script src="data.js"></script>
 <script>
 (function(){
- const lib=window.LECTURE_LIBRARY;
- const nav=document.getElementById('nav'), main=document.getElementById('main'), search=document.getElementById('search');
- if(!lib){document.getElementById('summary').textContent='data.js could not be loaded.';return}
- document.getElementById('summary').textContent=lib.pageCount+' original pages extracted from the supplied HTML.';
- const byId=new Map(lib.pages.map(p=>[p.id,p]));
- function openPage(id){
-  const p=byId.get(id);if(!p)return;
-  document.querySelectorAll('.page-btn').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
-  main.replaceChildren();
-  const h=document.createElement('h2');h.textContent=p.title;main.append(h);
-  const meta=document.createElement('p');meta.className='note';meta.textContent='Original key: '+p.key+' · Extracted links: '+p.links.length;main.append(meta);
-  if(p.links.length){const links=document.createElement('div');links.className='links';p.links.slice(0,80).forEach(l=>{const a=document.createElement('a');a.href=l.url;a.textContent=l.title;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});main.append(links)}
-  const toolbar=document.createElement('div');toolbar.className='toolbar';
-  const full=document.createElement('button');full.className='action';full.textContent='⛶ Fullscreen content';toolbar.append(full);main.append(toolbar);
-  const frame=document.createElement('iframe');frame.className='frame';frame.title=p.title;frame.setAttribute('allow','fullscreen; autoplay; encrypted-media; picture-in-picture');frame.setAttribute('allowfullscreen','');frame.srcdoc=p.html;main.append(frame);
-  full.addEventListener('click',()=>{if(frame.requestFullscreen)frame.requestFullscreen();else if(frame.webkitRequestFullscreen)frame.webkitRequestFullscreen()});
+const D=window.STUDY_HUB_DATA, nav=document.getElementById('nav'), main=document.getElementById('main'), search=document.getElementById('search');
+if(!D){main.textContent='Could not load data.js. Keep index.html and data.js in the same folder.';return;}
+document.getElementById('subtitle').textContent=`${D.pageCount} batch/library pages • Search across categories`;
+const esc=s=>String(s??'');
+const byId=new Map(D.batches.map(x=>[x.id,x]));
+function btn(label,fn,cls='action'){const b=document.createElement('button');b.className=cls;b.textContent=label;b.onclick=fn;return b;}
+function linkRow(item,type){const row=document.createElement('div');row.className='resource';const left=document.createElement('div');const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.label||type;left.append(a);const small=document.createElement('small');small.textContent=type;left.append(small);row.append(left);const open=btn('Open ↗',()=>window.open(item.url,'_blank','noopener'));row.append(open);return row;}
+function showHome(q=''){
+ main.replaceChildren();const hero=document.createElement('section');hero.className='hero';hero.innerHTML='<h2>Find your batch, lectures & notes</h2><p class="muted">Choose a category, open a batch, then browse its original topic-wise content. Search works across batch names and folders.</p>';main.append(hero);
+ const list=D.batches.filter(b=>(b.category+' '+b.batch+' '+b.title+' '+b.key).toLowerCase().includes(q.toLowerCase()));
+ const stats=document.createElement('div');stats.className='stats';[[D.categories.length,'Categories'],[list.length,'Matching batches'],[list.reduce((n,b)=>n+b.videoCount,0),'Indexed video links']].forEach(([n,l])=>{const s=document.createElement('div');s.className='stat';s.innerHTML='<b>'+n+'</b><span>'+l+'</span>';stats.append(s)});main.append(stats);
+ const grid=document.createElement('div');grid.className='grid';list.forEach(b=>{const c=document.createElement('button');c.className='card';const h=document.createElement('h3');h.textContent=b.batch;c.append(h);const p=document.createElement('div');p.className='muted';p.textContent=b.category+' · '+b.title;c.append(p);const pills=document.createElement('div');pills.className='pills';[['🎬 '+b.videoCount+' video links'],['📄 '+b.notesCount+' notes/resources']].forEach(x=>{const z=document.createElement('span');z.className='pill';z.textContent=x[0];pills.append(z)});c.append(pills);c.onclick=()=>showBatch(b.id);grid.append(c)});main.append(grid);
+}
+function showBatch(id,tab='overview'){
+ const b=byId.get(id);if(!b)return;main.replaceChildren();
+ const hero=document.createElement('section');hero.className='hero';const h=document.createElement('h2');h.textContent=b.batch;hero.append(h);const p=document.createElement('p');p.className='muted';p.textContent=b.category+' · '+b.title;hero.append(p);main.append(hero);
+ const tabs=document.createElement('div');tabs.className='tabs';[['overview','Overview'],['lectures','Lectures & Videos'],['notes','Notes & PDFs'],['original','Full Original Page']].forEach(([key,label])=>{const x=btn(label,()=>showBatch(id,key),'tab'+(tab===key?' active':''));tabs.append(x)});main.append(tabs);
+ const content=document.createElement('section');content.className='panel';main.append(content);
+ if(tab==='overview'){
+  const msg=document.createElement('p');msg.className='notice';msg.textContent='The original page is preserved below in the Full Original Page tab. Its own topic folders, batch structure and study resources remain available there.';content.append(msg);
+  const row=document.createElement('div');row.className='stats';[[b.videoCount,'Indexed video links'],[b.notesCount,'Indexed notes/resources'],[b.structuredData?'Yes':'Original page','Structured data detected']].forEach(([n,l])=>{const x=document.createElement('div');x.className='stat';x.innerHTML='<b>'+n+'</b><span>'+l+'</span>';row.append(x)});content.append(row);
+  content.append(btn('Open full original batch page →',()=>showBatch(id,'original'),'action primary'));
+ }else if(tab==='lectures'||tab==='notes'){
+  const items=tab==='lectures'?b.videos:b.notes;
+  if(!items.length){content.innerHTML='<div class="empty">Direct links could not be safely indexed from this page’s script. Open “Full Original Page” to see its original folders, lecture list and resources.</div>';content.append(btn('Open original page →',()=>showBatch(id,'original')));}
+  else items.forEach(item=>content.append(linkRow(item,tab==='lectures'?'Video / class':'Notes / PDF / resource')));
+ }else{
+  const p=document.createElement('p');p.className='notice';p.textContent='Original page is loaded below. Use its own batch/folder controls. Fullscreen works for the page; video fullscreen depends on the provider player.';content.append(p);
+  const tools=document.createElement('div');tools.className='toolbar';const frame=document.createElement('iframe');frame.className='frame';frame.title=b.title;frame.allow='fullscreen; autoplay; encrypted-media; picture-in-picture';frame.setAttribute('allowfullscreen','');frame.srcdoc=b.html;
+  tools.append(btn('⛶ Fullscreen page',()=>{if(frame.requestFullscreen)frame.requestFullscreen();else if(frame.webkitRequestFullscreen)frame.webkitRequestFullscreen()},'action primary'));content.append(tools);content.append(frame);
  }
- function renderNav(q=''){
-  nav.replaceChildren();const query=q.toLowerCase();
-  lib.categories.forEach(c=>{
-   const matches=c.pageIds.map(id=>byId.get(id)).filter(p=>(c.name+' '+p.title+' '+p.key).toLowerCase().includes(query));
-   if(!matches.length)return;
-   const label=document.createElement('div');label.className='cat';label.textContent=c.name;nav.append(label);
-   matches.forEach(p=>{const b=document.createElement('button');b.className='page-btn';b.textContent=p.title;b.dataset.id=p.id;b.addEventListener('click',()=>openPage(p.id));nav.append(b)});
-  });
-  if(!nav.children.length){const p=document.createElement('p');p.className='note';p.textContent='No pages matched your search.';nav.append(p)}
- }
- renderNav();search.addEventListener('input',()=>renderNav(search.value));
- const grid=document.createElement('div');grid.className='grid';
- lib.pages.forEach(p=>{const b=document.createElement('button');b.className='card';b.innerHTML='';const strong=document.createElement('strong');strong.textContent=p.title;b.append(strong);const small=document.createElement('small');small.textContent=p.category+' · '+p.links.length+' extracted links';b.append(small);b.addEventListener('click',()=>openPage(p.id));grid.append(b)});
- const welcome=main.querySelector('.welcome');welcome.append(grid);
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderNav(q=''){
+ nav.replaceChildren();const groups=new Map();D.batches.forEach(b=>{if((b.category+' '+b.batch+' '+b.title+' '+b.key).toLowerCase().includes(q.toLowerCase())){if(!groups.has(b.category))groups.set(b.category,[]);groups.get(b.category).push(b)}});
+ groups.forEach((arr,cat)=>{const label=document.createElement('div');label.className='category';label.textContent=cat;nav.append(label);arr.forEach(b=>nav.append(btn(b.batch,()=>showBatch(b.id),'navbtn')))});if(!nav.children.length)nav.textContent='No matching batch found.';
+}
+search.addEventListener('input',()=>{renderNav(search.value);showHome(search.value)});renderNav();showHome();
 })();
-</script>
-</body>
-</html>
+</script></body></html>
